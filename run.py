@@ -1,9 +1,8 @@
-from flask import Flask
-app = Flask(__name__)
+#!/usr/bin/ python
+# -*- coding: utf-8 -*-
 
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
+from erapp import build_app
+app = build_app()
 
 if __name__ == '__main__':
     app.run()
