@@ -1,0 +1,54 @@
+<!DOCTYPE html">
+<html lang="en" class="full">
+<head>
+    <!-- JQuery -->
+  <script src="{{ url_for('static', filename='js/jquery-2.1.4.min.js') }}">
+  </script>
+
+    <!-- Bootstrap JS -->
+  <script async src="{{ url_for('static', filename='js/bootstrap.min.js') }}">
+  </script>
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+  <!-- Bootstrap Mobile Response -->
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+
+  <title>{% block title %}ER App{% endblock %}</title>
+  {% block head %}
+  {% endblock %}
+</head>
+<body>
+  <div id="header">
+    {% block header %}
+      {% block flash %}
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <div class="flash-msg">
+                <ul class="flash-msg">
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+          {% endwith %}
+      {% endblock %}
+    {% endblock %}
+  </div>
+  <div id="wrap">
+    <div id="content">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </div>
+
+  <div id="footer">
+    {% block footer %}
+    {% endblock %}
+  </div>
+</body>
