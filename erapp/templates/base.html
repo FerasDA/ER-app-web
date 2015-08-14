@@ -1,3 +1,5 @@
+{% import "macros/nav.html" as nav %}
+
 <!DOCTYPE html">
 <html lang="en" class="full">
 <head>
@@ -9,14 +11,14 @@
   <script async src="{{ url_for('static', filename='js/bootstrap.min.js') }}">
   </script>
   
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap and custom CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
 
   <!-- Bootstrap Mobile Response -->
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
 
   <title>{% block title %}ER App{% endblock %}</title>
   {% block head %}
@@ -25,6 +27,7 @@
 <body>
   <div id="header">
     {% block header %}
+      {{ nav.main_nav(user=user) }}
       {% block flash %}
           {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -49,6 +52,7 @@
 
   <div id="footer">
     {% block footer %}
+      {{ nav.footer() }}
     {% endblock %}
   </div>
 </body>
